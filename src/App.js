@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import React,{useState} from 'react';
 import './App.css';
+import CovidInfo from './CovidInfo';
+import CountriesDropDown from './CountriesDropDown';
 
 function App() {
+
+  const [country,setCountry] = useState("")
+
+  const countrySelected = (childData) => {
+    console.log(childData)
+    setCountry(childData)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>
+        COVID 19 Tracker App in React
+      </h1>
+      
+      <CountriesDropDown selectedCountry = {countrySelected}></CountriesDropDown>
+      <CovidInfo country={country}></CovidInfo>
     </div>
   );
 }
